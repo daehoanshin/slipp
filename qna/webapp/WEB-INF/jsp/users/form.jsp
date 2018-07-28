@@ -25,7 +25,6 @@
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">
 							<input type="text" id="userId" name="userId" value="" placeholder="">
-							<input type="hidden" name="userId" value="" />
 						</div>
 					</div>
 					<div class="control-group">
