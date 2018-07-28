@@ -6,6 +6,17 @@
 
 	<display-name>QnA</display-name>
 	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:/applicationContext.xml
+		</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>slipp</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
