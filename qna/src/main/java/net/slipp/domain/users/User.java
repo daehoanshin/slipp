@@ -1,9 +1,18 @@
 package net.slipp.domain.users;
 
-public class User {
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+ public class User {
+	@NotNull @Min(4) @Max(12)
 	private String userId;
+	@NotNull @Min(4) @Max(12)
 	private String password;
+	@NotNull
 	private String name;
+	@Email
 	private String email;
 	
 	public User() {
@@ -43,7 +52,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", name=" + name + ", email=" + email + "]";
+		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
 	}
 
 	@Override
