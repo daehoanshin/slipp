@@ -47,4 +47,10 @@ public class UserController {
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/login/form")
+	public String loginForm(Model model) {
+		model.addAttribute("user", new User());
+		return "users/form";
+	}
 }
