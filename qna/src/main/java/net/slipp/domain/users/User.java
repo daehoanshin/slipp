@@ -49,6 +49,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 		this.email = email;
 	}
 
+	public boolean matchPassword(Authenticate authenticate) {
+		if(this.password == null) {
+			return false;
+		}
+		
+		return authenticate.matchPassword(this.password);
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
@@ -90,5 +99,4 @@ import org.hibernate.validator.constraints.NotEmpty;
 			return false;
 		return true;
 	}
-	
 }
