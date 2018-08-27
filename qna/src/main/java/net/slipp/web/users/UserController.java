@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,7 +29,7 @@ public class UserController {
 	private UserDao userDao;
 	
 	@RequestMapping("/form")
-	public String form(Model model) {
+	public String createForm(Model model) {
 		model.addAttribute("user", new User());
 		return "users/form";
 	}
@@ -48,6 +49,16 @@ public class UserController {
 		userDao.create(user);
 		log.debug("Database : {}", userDao.findById(user.getUserId()));
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/{userId}/form")
+	public String updateForm(@PathVariable String userId, Model model) {
+		if(userId == null) {
+			throw new IllegalArgumentException("사용자 아이디가 필요합니다");
+		}
+		User user = userDao.findById(userId);
+		model.addAttribute("user", user);
+		return "users/form";
 	}
 	
 	@RequestMapping("/login/form")
