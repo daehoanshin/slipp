@@ -5,9 +5,9 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
  public class User {
-	@NotEmpty @Size(min=4, max=12)
+	@NotEmpty @Size(min=4, max=15)
 	private String userId;
-	@NotEmpty @Size(min=4, max=12)
+	@NotEmpty @Size(min=4, max=15)
 	private String password;
 	@NotEmpty
 	private String name;
@@ -49,6 +49,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 		this.email = email;
 	}
 
+	public boolean matchUserId(String inputUserId) {
+		if(inputUserId == null) {
+			return false;
+		}
+		return inputUserId.equals(this.userId);
+	}
+	
 	public boolean matchPassword(Authenticate authenticate) {
 		if(this.password == null) {
 			return false;
@@ -57,6 +64,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 		return authenticate.matchPassword(this.password);
 	}
 	
+	public User update(User updateUser) {
+		if(!matchUserId(updateUser.userId)) {
+			throw new IllegalArgumentException();
+		}
+		return new User(this.userId, updateUser.password, updateUser.name, updateUser.password);
+	}
 	
 	@Override
 	public String toString() {
@@ -100,10 +113,5 @@ import org.hibernate.validator.constraints.NotEmpty;
 		return true;
 	}
 
-	public boolean matchUserId(String inputUserId) {
-		if(inputUserId == null) {
-			return false;
-		}
-		return inputUserId.equals(this.userId);
-	}
+	
 }
