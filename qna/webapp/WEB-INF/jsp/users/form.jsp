@@ -31,7 +31,7 @@
 				</c:choose>
 				
 				
-				<form:form modelAttribute="user" cssClass="form-horizontal" action="/users" method="post">
+				<form:form modelAttribute="user" cssClass="form-horizontal" action="/users" method="${method}">
 					<div class="control-group">
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">

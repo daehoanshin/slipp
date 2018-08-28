@@ -61,6 +61,34 @@ public class UserController {
 		return "users/form";
 	}
 	
+	@RequestMapping(value="", method=RequestMethod.PUT)
+	public String update(@Valid User user, BindingResult bindingResult, HttpSession session) {
+		log.debug("User : {}", user);
+		
+		if(bindingResult.hasErrors()) {
+			log.debug("Binding Result has error!");
+			List<ObjectError> errors =  bindingResult.getAllErrors();
+			for (ObjectError error : errors) {
+				log.debug("error : {}, {}" , error.getCode(), error.getDefaultMessage());
+			}
+			return "users/form";
+		}
+		
+		Object temp = session.getAttribute("userId");
+		if(temp == null) {
+			throw new NullPointerException();
+		}
+		
+		String userId = (String)temp;
+		if(user.matchUserId(userId)) {
+			throw new NullPointerException();
+		}
+		
+		userDao.update(user);
+		log.debug("Database : {}", userDao.findById(user.getUserId()));
+		return "redirect:/";
+	}
+	
 	@RequestMapping("/login/form")
 	public String loginForm(Model model) {
 		model.addAttribute("authenticate", new Authenticate());
