@@ -2,12 +2,15 @@ package net.slipp.domain.users;
 
 import javax.validation.constraints.Size;
 
+import org.apache.ibatis.type.Alias;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+
+@Alias("user")
  public class User {
-	@NotEmpty @Size(min=4, max=15)
+	@NotEmpty @Size(min=4, max=12)
 	private String userId;
-	@NotEmpty @Size(min=4, max=15)
+	@NotEmpty @Size(min=4, max=12)
 	private String password;
 	@NotEmpty
 	private String name;

@@ -15,9 +15,9 @@ import net.slipp.domain.users.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:/applicationContext.xml")
-public class MyBatisUserDaoTest {
+public class userDaoTest {
 	
-	private static final Logger log = LoggerFactory.getLogger(MyBatisUserDaoTest.class);
+	private static final Logger log = LoggerFactory.getLogger(userDaoTest.class);
 
 	@Autowired
 	private UserDao userDao;

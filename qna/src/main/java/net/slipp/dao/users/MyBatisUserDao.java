@@ -16,7 +16,7 @@ public class MyBatisUserDao implements UserDao {
 	private SqlSession sqlSession;
 	private DataSource dataSource;
 	
-	private static final Logger log = LoggerFactory.getLogger(JdbcUserDao.class);
+	private static final Logger log = LoggerFactory.getLogger(MyBatisUserDao.class);
 	@PostConstruct
 	public void initialize() {
 		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
