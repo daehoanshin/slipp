@@ -70,6 +70,12 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.1.1.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.6</version>
+		</dependency>
+
 
 		<!-- Jsp & Servlet -->
 		<dependency>
@@ -88,7 +94,6 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -99,6 +104,18 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src\main\resources</directory>
+			</resource>
+			<resource>
+				<directory>src\main\java</directory>
+				<excludes>
+					<exclude>**\*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -125,6 +142,7 @@
 					<warSourceDirectory>webapp</warSourceDirectory>
 				</configuration>
 			</plugin>
+			
 		</plugins>
 	</build>
 </project>
