@@ -10,3 +10,8 @@ CREATE TABLE USERS (
 );
 
 INSERT INTO USERS VALUES('javajigi', 'password', '자바지기', 'javajigi@slipp.net');
+
+
+select user_id, user_nm, user_pw
+        from ams.tb_lock
+        where user_id = #{user_id}

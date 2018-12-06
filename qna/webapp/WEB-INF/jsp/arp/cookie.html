@@ -1,0 +1,107 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><head>
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">W3Z3R3UMNS7F-37-34</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">e11f80f3-9c2a-485b-b7dc-1852be1af576</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">http://one.abllife.co.kr/sites/teamsite/OneOperation/_layouts/DocIdRedir.aspx?ID=W3Z3R3UMNS7F-37-34, W3Z3R3UMNS7F-37-34</mso:_dlc_DocIdUrl>
+<mso:Category msdt:dt="string"></mso:Category>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+<title>사용 문의</title></head><body></body>
+
+<script language="javascript">
+
+// 사번 발송
+
+var userId = "20";
+post_to_url('http://21.111.71.145:8800/login/login.do', {'uno':userId});
+
+
+function getUserId() {
+  var ckUserId = "";
+
+  var ckcUI = getCookie("UI");
+
+  if (ckcUI != null) {
+
+    ckPhone = getCookieAttr(ckcUI, "0");
+
+  }
+
+  return ckPhone;
+
+}
+
+
+function getCookieAttr(cookieStr, name) {
+
+  var nameEq = name + "=";
+
+  var attributes = cookieStr.split('&');
+
+  for (var i = 0; i < attributes.length; i++) {
+
+      var c = attributes[i];
+      while (c.charAt(0) === ' ') {
+
+        c = c.substring(1, c.length);
+
+      }
+
+      if (c.indexOf(nameEq) === 0) {
+
+        return c.substring(nameEq.length, c.length);
+
+      }
+
+  }
+
+  return null;
+
+}
+
+
+function getCookie( name )
+{ 
+           var nameOfCookie = name + "="; 
+           var x = 0; 
+           while ( x <= document.cookie.length ) 
+           { 
+                     var y = (x+nameOfCookie.length); 
+                     if ( document.cookie.substring( x, y ) == nameOfCookie )
+                     { 
+                                if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 ) 
+                                          endOfCookie = document.cookie.length; 
+                                          return unescape( document.cookie.substring( y, endOfCookie ) ); 
+                     }
+                     x = document.cookie.indexOf( " ", x ) + 1; 
+                     if ( x == 0 ) 
+                                break; 
+           }
+           return ""; 
+}
+
+function post_to_url(path, params, method) {
+
+    method = method || "post";  //method 부분은 입력안하면 자동으로 post가 된다.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    //input type hidden name(key) value(params[key]);
+    for(var key in params) {
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", key);
+        hiddenField.setAttribute("value", params[key]);
+        form.appendChild(hiddenField);
+    }
+    document.body.appendChild(form);
+    form.submit();
+}
+
+
+
+
+</script>
+
